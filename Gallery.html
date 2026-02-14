@@ -13,12 +13,32 @@
   box-sizing:border-box;
 }
 
+/* ===== THEME VARIABLES ===== */
+:root{
+  --bg:#0a0a0a;
+  --text:#e0e0e0;
+  --nav:#111;
+  --border:#222;
+  --accent:#00cec9;
+  --card:#1a1a1a;
+}
+
+/* LIGHT THEME */
+body.light-theme{
+  --bg:#ffffff;
+  --text:#111;
+  --nav:#f1f1f1;
+  --border:#dcdde1;
+  --accent:#0984e3;
+  --card:#ffffff;
+}
+
 body{
   font-family:'Poppins',sans-serif;
-  background:#0a0a0a;
-  color:#e0e0e0;
+  background:var(--bg);
+  color:var(--text);
   opacity:0;
-  transition:opacity 1.2s ease-in-out;
+  transition:opacity 1.2s ease-in-out, background .4s, color .4s;
 }
 body.loaded{opacity:1;}
 
@@ -40,18 +60,18 @@ header{
   animation:gradientMove 5s ease infinite;
   padding:40px 20px;
   text-align:center;
-  border-bottom:2px solid #222;
+  border-bottom:2px solid var(--border);
 }
 header h1{
   font-size:2.5rem;
   color:#fff;
-  text-shadow:0 0 15px #00cec9;
+  text-shadow:0 0 15px var(--accent);
 }
 
 /* NAV */
 nav{
-  background:#111;
-  border-bottom:1px solid #222;
+  background:var(--nav);
+  border-bottom:1px solid var(--border);
   position:sticky;
   top:0;
   z-index:1000;
@@ -65,7 +85,7 @@ nav ul{
 }
 
 nav ul li a{
-  color:#dfe6e9;
+  color:var(--text);
   text-decoration:none;
   font-weight:bold;
   padding:12px 18px;
@@ -74,8 +94,8 @@ nav ul li a{
 }
 
 nav ul li a:hover{
-  color:#00cec9;
-  text-shadow:0 0 10px #00cec9;
+  color:var(--accent);
+  text-shadow:0 0 10px var(--accent);
 }
 
 /* HAMBURGER */
@@ -88,7 +108,7 @@ nav ul li a:hover{
 .menu-toggle span{
   height:3px;
   width:25px;
-  background:#dfe6e9;
+  background:var(--text);
   margin:4px 0;
 }
 
@@ -101,7 +121,7 @@ nav ul li a:hover{
 }
 
 .gallery-item{
-  background:#1a1a1a;
+  background:var(--card);
   border-radius:10px;
   overflow:hidden;
   box-shadow:0 6px 15px rgba(0,0,0,.7);
@@ -110,7 +130,7 @@ nav ul li a:hover{
 
 .gallery-item:hover{
   transform:scale(1.04);
-  box-shadow:0 0 20px #00cec9;
+  box-shadow:0 0 20px var(--accent);
 }
 
 .gallery-item img{
@@ -118,14 +138,34 @@ nav ul li a:hover{
   display:block;
 }
 
-/* FOOTER NORMAL */
+/* FOOTER */
 footer{
-  background:#111;
+  background:var(--nav);
   color:#b2bec3;
   text-align:center;
   padding:15px;
-  border-top:2px solid #222;
+  border-top:2px solid var(--border);
   margin-top:20px;
+}
+
+/* THEME BUTTON */
+.theme-btn{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:var(--accent);
+    color:#000;
+    border:none;
+    padding:10px 14px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+    box-shadow:0 4px 12px rgba(0,0,0,.3);
+    z-index:2000;
+    transition:0.3s;
+}
+.theme-btn:hover{
+    transform:scale(1.05);
 }
 
 /* ANIMATION */
@@ -150,7 +190,7 @@ footer{
     flex-direction:column;
     display:none;
     width:100%;
-    background:#111;
+    background:var(--nav);
   }
 
   nav ul.active{
@@ -160,7 +200,7 @@ footer{
   nav ul li{
     width:100%;
     text-align:center;
-    border-top:1px solid #222;
+    border-top:1px solid var(--border);
   }
 
   .gallery-container{
@@ -202,12 +242,30 @@ footer{
   <p>&copy; 2026 ICT | SHAMAL PUNCHIHEWA</p>
 </footer>
 
+<!-- THEME BUTTON -->
+<button class="theme-btn" onclick="toggleTheme()">🌓</button>
+
 <script>
 function toggleMenu(){
   document.getElementById("menu").classList.toggle("active");
 }
 
+function toggleTheme(){
+  document.body.classList.toggle("light-theme");
+
+  if(document.body.classList.contains("light-theme")){
+    localStorage.setItem("theme","light");
+  }else{
+    localStorage.setItem("theme","dark");
+  }
+}
+
 window.addEventListener("load", () => {
+
+  if(localStorage.getItem("theme")==="light"){
+    document.body.classList.add("light-theme");
+  }
+
   document.body.classList.add("loaded");
   document.querySelector("header").classList.add("loaded");
   document.querySelector("nav").classList.add("loaded");
