@@ -6,147 +6,192 @@
 <title>ICT Class Projects</title>
 
 <style>
+
 /* RESET */
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 /* ===== THEME VARIABLES ===== */
 :root{
-  --bg:#0a0a0a;
-  --text:#e0e0e0;
-  --nav:#111;
-  --border:#222;
-  --accent:#00cec9;
-  --card:#1a1a1a;
+    --bg:#000000;
+    --text:#e0e0e0;
+    --nav:#111;
+    --card:#1a1a1a;
+    --border:#222;
+    --accent:#00cec9;
 }
 
 /* LIGHT THEME */
 body.light-theme{
-  --bg:#ffffff;
-  --text:#111;
-  --nav:#f1f1f1;
-  --border:#dcdde1;
-  --accent:#0984e3;
-  --card:#ffffff;
+    --bg:#ffffff;
+    --text:#111;
+    --nav:#f1f1f1;
+    --card:#ffffff;
+    --border:#dcdde1;
+    --accent:#0984e3;
 }
 
 body{
-  font-family:'Poppins',sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  opacity:0;
-  transition:opacity 1.2s ease-in-out, background .4s, color .4s;
+    font-family:'Poppins',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
+    opacity:0;
+    transition:opacity 1.2s ease-in-out, background 0.4s, color 0.4s;
 }
-body.loaded{opacity:1;}
+
+body.loaded{
+    opacity:1;
+}
 
 /* ANIMATION */
 header, nav, .project-card, footer{
-  opacity:0;
-  transform:translateY(40px);
-  transition:all 1s ease;
+    opacity:0;
+    transform:translateY(40px);
+    transition:all 1s ease;
 }
-header.loaded, nav.loaded, .project-card.loaded, footer.loaded{
-  opacity:1;
-  transform:translateY(0);
+
+header.loaded,
+nav.loaded,
+.project-card.loaded,
+footer.loaded{
+    opacity:1;
+    transform:translateY(0);
 }
 
 /* HEADER */
 header{
-  background:linear-gradient(270deg,#000,#808080,#000);
-  background-size:600% 600%;
-  animation:gradientMove 5s ease infinite;
-  padding:40px 20px;
-  text-align:center;
-  border-bottom:2px solid var(--border);
+    background:linear-gradient(270deg,#000,#808080,#000);
+    background-size:600% 600%;
+    animation:gradientMove 5s ease infinite;
+    padding:40px 20px;
+    text-align:center;
+    border-bottom:2px solid var(--border);
 }
+
 header h1{
-  font-size:2.5rem;
-  color:#fff;
-  text-shadow:0 0 15px var(--accent);
+    font-size:2.5rem;
+    color:#fff;
+    text-shadow:0 0 15px var(--accent);
+}
+
+header p{
+    margin-top:10px;
 }
 
 /* NAVIGATION */
 nav{
-  background:var(--nav);
-  border-bottom:1px solid var(--border);
-  position:sticky;
-  top:0;
-  z-index:1000;
+    background:var(--nav);
+    border-bottom:1px solid var(--border);
+    position:sticky;
+    top:0;
+    z-index:1000;
 }
 
 nav ul{
-  list-style:none;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+    list-style:none;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
 nav ul li a{
-  color:var(--text);
-  text-decoration:none;
-  font-weight:bold;
-  padding:12px 18px;
-  display:block;
-  transition:.3s;
+    color:var(--text);
+    text-decoration:none;
+    font-weight:bold;
+    padding:12px 18px;
+    display:block;
+    transition:.3s;
 }
 
 nav ul li a:hover{
-  color:var(--accent);
-  text-shadow:0 0 10px var(--accent);
+    color:var(--accent);
+    text-shadow:0 0 10px var(--accent);
 }
 
 /* HAMBURGER */
 .menu-toggle{
-  display:none;
-  flex-direction:column;
-  cursor:pointer;
-  padding:10px 15px;
+    display:none;
+    flex-direction:column;
+    cursor:pointer;
+    padding:10px 15px;
 }
+
 .menu-toggle span{
-  height:3px;
-  width:25px;
-  background:var(--text);
-  margin:4px 0;
+    height:3px;
+    width:25px;
+    background:var(--text);
+    margin:4px 0;
 }
 
 /* PROJECT GRID */
 .project-container{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:25px;
-  padding:30px 20px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+    padding:30px 20px;
 }
 
+/* PROJECT CARD */
 .project-card{
-  background:var(--card);
-  padding:25px;
-  border-radius:12px;
-  border:1px solid #333;
-  box-shadow:0 6px 15px rgba(0,0,0,.7);
-  transition:.4s;
+    background:var(--card);
+    border-radius:12px;
+    overflow:hidden;
+    border:1px solid #333;
+    box-shadow:0 6px 15px rgba(0,0,0,.7);
+    transition:.4s;
 }
 
 .project-card:hover{
-  transform:translateY(-8px);
-  box-shadow:0 0 20px var(--accent);
+    transform:translateY(-8px);
+    box-shadow:0 0 20px var(--accent);
+}
+
+/* IMAGE */
+.project-card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+}
+
+/* CONTENT */
+.project-content{
+    padding:20px;
 }
 
 .project-card h2{
-  color:var(--accent);
-  margin-bottom:10px;
+    color:var(--accent);
+    margin-bottom:10px;
+}
+
+/* BUTTON */
+.project-btn{
+    display:inline-block;
+    margin-top:15px;
+    text-decoration:none;
+    background:var(--accent);
+    color:#000;
+    padding:10px 16px;
+    border-radius:8px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.project-btn:hover{
+    transform:scale(1.05);
 }
 
 /* FOOTER */
 footer{
-  background:var(--nav);
-  color:#b2bec3;
-  text-align:center;
-  padding:15px;
-  border-top:2px solid var(--border);
-  margin-top:20px;
+    background:var(--nav);
+    color:#b2bec3;
+    text-align:center;
+    padding:15px;
+    border-top:2px solid var(--border);
+    margin-top:20px;
 }
 
 /* THEME BUTTON */
@@ -165,131 +210,224 @@ footer{
     z-index:2000;
     transition:0.3s;
 }
+
 .theme-btn:hover{
     transform:scale(1.05);
 }
 
 /* ANIMATION */
 @keyframes gradientMove{
-  0%{background-position:0% 50%;}
-  50%{background-position:100% 50%;}
-  100%{background-position:0% 50%;}
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
 }
 
-/* MOBILE */
+/* MOBILE RESPONSIVE */
 @media (max-width:768px){
 
-  header h1{
-    font-size:1.8rem;
-  }
+    header h1{
+        font-size:1.8rem;
+    }
 
-  .menu-toggle{
-    display:flex;
-  }
+    .menu-toggle{
+        display:flex;
+    }
 
-  nav ul{
-    flex-direction:column;
-    display:none;
-    width:100%;
-    background:var(--nav);
-  }
+    nav ul{
+        flex-direction:column;
+        display:none;
+        width:100%;
+        background:var(--nav);
+    }
 
-  nav ul.active{
-    display:flex;
-  }
+    nav ul.active{
+        display:flex;
+    }
 
-  nav ul li{
-    width:100%;
-    text-align:center;
-    border-top:1px solid var(--border);
-  }
+    nav ul li{
+        width:100%;
+        text-align:center;
+        border-top:1px solid var(--border);
+    }
 
-  .project-container{
-    padding:20px 12px;
-  }
+    .project-container{
+        padding:20px 12px;
+    }
 
-  .project-card{
-    padding:18px;
-  }
+    .project-content{
+        padding:16px;
+    }
 }
+
 </style>
 </head>
 
 <body>
 
 <header>
-  <h1>ICT Class Projects</h1>
-  <p>Showcase of Student Work</p>
+    <h1>PROJECTS</h1>
+    <p>INFORMATION AND COMMUNICATION TECHNOLOGY</p>
 </header>
 
 <nav>
-  <div class="menu-toggle" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
-  </div>
-  <ul id="menu">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="Lessons.html">Lessons</a></li>
-    <li><a href="Projects.html">Projects</a></li>
-    <li><a href="Gallery.html">Gallery</a></li>
-    <li><a href="Contact.html">Contact</a></li>
-  </ul>
+
+    <div class="menu-toggle" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <ul id="menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="Papers.html">Papers</a></li>
+        <li><a href="Projects.html">Projects</a></li>
+        <li><a href="Online class.html">Online class</a></li>
+        <li><a href="Contact.html">Contact</a></li>
+    </ul>
+
 </nav>
 
+<!-- PROJECT SECTION -->
+
 <div class="project-container">
-  <div class="project-card">
-    <h2>Website Design</h2>
-    <p>Students created responsive websites using HTML & CSS.</p>
-  </div>
-  <div class="project-card">
-    <h2>Programming Challenges</h2>
-    <p>Algorithmic problem-solving with C++, Java, and Python.</p>
-  </div>
-  <div class="project-card">
-    <h2>Team Collaboration</h2>
-    <p>Group projects focusing on creative digital solutions.</p>
-  </div>
-  <div class="project-card">
-    <h2>Multimedia Projects</h2>
-    <p>Interactive presentations and video-based ICT projects.</p>
-  </div>
+
+    <!-- CARD 1 -->
+    <div class="project-card">
+
+        <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="project-content">
+
+            <h2>Website Design</h2>
+
+            <p>
+                Students created responsive websites using HTML & CSS.
+            </p>
+
+            <a href="webdesign.html" class="project-btn">
+                View Project
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="project-card">
+
+        <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="project-content">
+
+            <h2>Programming Challenges</h2>
+
+            <p>
+                Algorithmic problem-solving with C++, Java, and Python.
+            </p>
+
+            <a href="programming.html" class="project-btn">
+                View Project
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="project-card">
+
+        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="project-content">
+
+            <h2>Team Collaboration</h2>
+
+            <p>
+                Group projects focusing on creative digital solutions.
+            </p>
+
+            <a href="teamwork.html" class="project-btn">
+                View Project
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- CARD 4 -->
+    <div class="project-card">
+
+        <img src="https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="project-content">
+
+            <h2>Multimedia Projects</h2>
+
+            <p>
+                Interactive presentations and video-based ICT projects.
+            </p>
+
+            <a href="multimedia.html" class="project-btn">
+                View Project
+            </a>
+
+        </div>
+
+    </div>
+
 </div>
 
 <footer>
-  <p>&copy; 2026 ICT | SHAMAL PUNCHIHEWA</p>
+    <p>&copy; 2026 ICT | SHAMAL PUNCHIHEWA</p>
 </footer>
 
 <!-- THEME BUTTON -->
+
 <button class="theme-btn" onclick="toggleTheme()">🌓</button>
 
 <script>
+
+/* MENU */
+
 function toggleMenu(){
-  document.getElementById("menu").classList.toggle("active");
+    document.getElementById("menu").classList.toggle("active");
 }
+
+/* THEME TOGGLE */
 
 function toggleTheme(){
-  document.body.classList.toggle("light-theme");
 
-  if(document.body.classList.contains("light-theme")){
-    localStorage.setItem("theme","light");
-  }else{
-    localStorage.setItem("theme","dark");
-  }
+    document.body.classList.toggle("light-theme");
+
+    if(document.body.classList.contains("light-theme")){
+        localStorage.setItem("theme","light");
+    }else{
+        localStorage.setItem("theme","dark");
+    }
+
 }
+
+/* LOAD */
 
 window.addEventListener("load", () => {
 
-  if(localStorage.getItem("theme")==="light"){
-    document.body.classList.add("light-theme");
-  }
+    if(localStorage.getItem("theme")==="light"){
+        document.body.classList.add("light-theme");
+    }
 
-  document.body.classList.add("loaded");
-  document.querySelector("header").classList.add("loaded");
-  document.querySelector("nav").classList.add("loaded");
-  document.querySelectorAll(".project-card").forEach(card=>{
-    card.classList.add("loaded");
-  });
-  document.querySelector("footer").classList.add("loaded");
+    document.body.classList.add("loaded");
+
+    document.querySelector("header").classList.add("loaded");
+    document.querySelector("nav").classList.add("loaded");
+
+    document.querySelectorAll(".project-card").forEach(card=>{
+        card.classList.add("loaded");
+    });
+
+    document.querySelector("footer").classList.add("loaded");
+
 });
+
 </script>
 
 </body>

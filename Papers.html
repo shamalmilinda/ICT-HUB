@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ICT Class Gallery</title>
+<title>ICT Class Lessons</title>
 
 <style>
+
 /* RESET */
 *{
   margin:0;
@@ -40,15 +41,22 @@ body{
   opacity:0;
   transition:opacity 1.2s ease-in-out, background .4s, color .4s;
 }
-body.loaded{opacity:1;}
 
-/* ANIMATION */
-header, nav, .gallery-item, footer{
+body.loaded{
+  opacity:1;
+}
+
+/* ANIMATIONS */
+header, nav, .lesson, footer{
   opacity:0;
   transform:translateY(40px);
   transition:all 1s ease;
 }
-header.loaded, nav.loaded, .gallery-item.loaded, footer.loaded{
+
+header.loaded,
+nav.loaded,
+.lesson.loaded,
+footer.loaded{
   opacity:1;
   transform:translateY(0);
 }
@@ -62,10 +70,15 @@ header{
   text-align:center;
   border-bottom:2px solid var(--border);
 }
+
 header h1{
   font-size:2.5rem;
   color:#fff;
   text-shadow:0 0 15px var(--accent);
+}
+
+header p{
+  margin-top:10px;
 }
 
 /* NAV */
@@ -105,6 +118,7 @@ nav ul li a:hover{
   cursor:pointer;
   padding:10px 15px;
 }
+
 .menu-toggle span{
   height:3px;
   width:25px;
@@ -112,30 +126,44 @@ nav ul li a:hover{
   margin:4px 0;
 }
 
-/* GALLERY */
-.gallery-container{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
+/* LESSONS */
+.lesson-container{
+  max-width:1000px;
+  margin:auto;
   padding:30px 20px;
 }
 
-.gallery-item{
+.lesson{
   background:var(--card);
-  border-radius:10px;
-  overflow:hidden;
+  padding:20px;
+  margin-bottom:20px;
+  border-radius:12px;
+  border:1px solid #333;
   box-shadow:0 6px 15px rgba(0,0,0,.7);
   transition:.4s;
 }
 
-.gallery-item:hover{
-  transform:scale(1.04);
+.lesson:hover{
+  transform:translateY(-6px);
   box-shadow:0 0 20px var(--accent);
 }
 
-.gallery-item img{
-  width:100%;
+.lesson h2{
+  margin:0;
+}
+
+/* LINK STYLE */
+.lesson-link{
+  color:var(--accent);
+  text-decoration:none;
   display:block;
+  width:100%;
+  height:100%;
+  transition:.3s;
+}
+
+.lesson-link:hover{
+  color:#828282;
 }
 
 /* FOOTER */
@@ -150,22 +178,23 @@ footer{
 
 /* THEME BUTTON */
 .theme-btn{
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    background:var(--accent);
-    color:#000;
-    border:none;
-    padding:10px 14px;
-    border-radius:8px;
-    cursor:pointer;
-    font-weight:bold;
-    box-shadow:0 4px 12px rgba(0,0,0,.3);
-    z-index:2000;
-    transition:0.3s;
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:var(--accent);
+  color:#000;
+  border:none;
+  padding:10px 14px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:bold;
+  box-shadow:0 4px 12px rgba(0,0,0,.3);
+  z-index:2000;
+  transition:0.3s;
 }
+
 .theme-btn:hover{
-    transform:scale(1.05);
+  transform:scale(1.05);
 }
 
 /* ANIMATION */
@@ -203,39 +232,95 @@ footer{
     border-top:1px solid var(--border);
   }
 
-  .gallery-container{
+  .lesson-container{
     padding:20px 12px;
-    gap:15px;
+  }
+
+  .lesson{
+    padding:16px;
   }
 }
+
 </style>
 </head>
 
 <body>
 
 <header>
-  <h1>GALLERY</h1>
+  <h1>PAPERS</h1>
   <p>INFORMATION AND COMMUNICATION TECHNOLOGY</p>
 </header>
 
 <nav>
+
   <div class="menu-toggle" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
+
   <ul id="menu">
     <li><a href="index.html">Home</a></li>
-    <li><a href="Lessons.html">Papers</a></li>
+    <li><a href="Papers.html">Papers</a></li>
     <li><a href="Projects.html">Projects</a></li>
-    <li><a href="Gallery.html">Gallery</a></li>
+    <li><a href="Online class.html">Online class</a></li>
     <li><a href="Contact.html">Contact</a></li>
   </ul>
+
 </nav>
 
-<div class="gallery-container">
-  <div class="gallery-item"><img src="Album image.jpg" alt="Project 1"></div>
-  <div class="gallery-item"><img src="Album image.jpg" alt="Project 2"></div>
-  <div class="gallery-item"><img src="Album image.jpg" alt="Project 3"></div>
-  <div class="gallery-item"><img src="Album image.jpg" alt="Project 4"></div>
+<!-- LESSONS -->
+
+<div class="lesson-container">
+
+  <div class="lesson">
+    <h2>
+      <a href="grade11.html" class="lesson-link">
+        Grade 11 - Papers
+      </a>
+    </h2>
+  </div>
+
+  <div class="lesson">
+    <h2>
+      <a href="grade10.html" class="lesson-link">
+        Grade 10 - Papers
+      </a>
+    </h2>
+  </div>
+
+  <div class="lesson">
+    <h2>
+      <a href="grade9.html" class="lesson-link">
+        Grade 9 - Papers
+      </a>
+    </h2>
+  </div>
+
+  <div class="lesson">
+    <h2>
+      <a href="grade8.html" class="lesson-link">
+        Grade 8 - Papers
+      </a>
+    </h2>
+  </div>
+
+  <div class="lesson">
+    <h2>
+      <a href="grade7.html" class="lesson-link">
+        Grade 7 - Papers
+      </a>
+    </h2>
+  </div>
+
+  <div class="lesson">
+    <h2>
+      <a href="grade6.html" class="lesson-link">
+        Grade 6 - Papers
+      </a>
+    </h2>
+  </div>
+
 </div>
 
 <footer>
@@ -243,14 +328,21 @@ footer{
 </footer>
 
 <!-- THEME BUTTON -->
+
 <button class="theme-btn" onclick="toggleTheme()">🌓</button>
 
 <script>
+
+/* MENU */
+
 function toggleMenu(){
-  document.getElementById("menu").classList.toggle("active");
+  document.getElementById('menu').classList.toggle('active');
 }
 
+/* THEME */
+
 function toggleTheme(){
+
   document.body.classList.toggle("light-theme");
 
   if(document.body.classList.contains("light-theme")){
@@ -258,7 +350,10 @@ function toggleTheme(){
   }else{
     localStorage.setItem("theme","dark");
   }
+
 }
+
+/* LOAD */
 
 window.addEventListener("load", () => {
 
@@ -267,13 +362,18 @@ window.addEventListener("load", () => {
   }
 
   document.body.classList.add("loaded");
+
   document.querySelector("header").classList.add("loaded");
   document.querySelector("nav").classList.add("loaded");
-  document.querySelectorAll(".gallery-item").forEach(item=>{
-    item.classList.add("loaded");
+
+  document.querySelectorAll(".lesson").forEach(lesson=>{
+    lesson.classList.add("loaded");
   });
+
   document.querySelector("footer").classList.add("loaded");
+
 });
+
 </script>
 
 </body>

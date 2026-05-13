@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ICT Video Lessons</title>
+
+<style>
+
+/* RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+/* THEME */
+:root{
+  --bg:#0a0a0a;
+  --text:#e0e0e0;
+  --nav:#111;
+  --border:#222;
+  --accent:#00cec9;
+  --card:#1a1a1a;
+}
+
+body.light-theme{
+  --bg:#ffffff;
+  --text:#111;
+  --nav:#f1f1f1;
+  --border:#dcdde1;
+  --accent:#0984e3;
+  --card:#ffffff;
+}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  transition:.4s;
+}
+
+/* HEADER */
+header{
+  background:linear-gradient(270deg,#000,#808080,#000);
+  background-size:600% 600%;
+  animation:gradientMove 5s ease infinite;
+  padding:40px 20px;
+  text-align:center;
+  border-bottom:2px solid var(--border);
+}
+
+header h1{
+  font-size:2.5rem;
+  color:#fff;
+  text-shadow:0 0 15px var(--accent);
+}
+
+header p{
+  margin-top:10px;
+  color:#ddd;
+}
+
+/* NAV */
+nav{
+  background:var(--nav);
+  position:sticky;
+  top:0;
+  z-index:1000;
+  border-bottom:1px solid var(--border);
+}
+
+/* NAV CONTAINER */
+.nav-container{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:0 15px;
+}
+
+/* MENU */
+nav ul{
+  list-style:none;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+nav ul li a{
+  color:var(--text);
+  text-decoration:none;
+  font-weight:bold;
+  padding:14px 18px;
+  display:block;
+  transition:.3s;
+}
+
+nav ul li a:hover{
+  color:var(--accent);
+  text-shadow:0 0 10px var(--accent);
+}
+
+/* HAMBURGER */
+.menu-toggle{
+  display:none;
+  flex-direction:column;
+  cursor:pointer;
+  padding:12px 0;
+}
+
+.menu-toggle span{
+  width:28px;
+  height:3px;
+  background:var(--text);
+  margin:4px 0;
+  border-radius:5px;
+}
+
+/* VIDEO SECTION */
+.video-container{
+  max-width:1100px;
+  margin:auto;
+  padding:30px 20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:25px;
+}
+
+.video-card{
+  background:var(--card);
+  border:1px solid #333;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 6px 15px rgba(0,0,0,.6);
+  transition:.4s;
+}
+
+.video-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 0 20px var(--accent);
+}
+
+/* THUMBNAIL */
+.video-thumb{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+}
+
+/* CONTENT */
+.video-content{
+  padding:18px;
+}
+
+.video-content h2{
+  color:var(--accent);
+  margin-bottom:10px;
+  font-size:1.2rem;
+}
+
+.video-content p{
+  font-size:0.95rem;
+  line-height:1.5;
+  margin-bottom:15px;
+  color:#bbb;
+}
+
+/* BUTTON */
+.watch-btn{
+  display:inline-block;
+  text-decoration:none;
+  background:var(--accent);
+  color:#000;
+  padding:10px 16px;
+  border-radius:8px;
+  font-weight:bold;
+  transition:.3s;
+}
+
+.watch-btn:hover{
+  transform:scale(1.05);
+}
+
+/* FOOTER */
+footer{
+  background:var(--nav);
+  color:#b2bec3;
+  text-align:center;
+  padding:15px;
+  border-top:2px solid var(--border);
+  margin-top:20px;
+}
+
+/* THEME BUTTON */
+.theme-btn{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:var(--accent);
+  color:#000;
+  border:none;
+  padding:10px 14px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:bold;
+  box-shadow:0 4px 12px rgba(0,0,0,.3);
+  z-index:2000;
+}
+
+/* ANIMATION */
+@keyframes gradientMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+  header h1{
+    font-size:1.8rem;
+  }
+
+  /* SHOW HAMBURGER */
+  .menu-toggle{
+    display:flex;
+  }
+
+  /* HIDE MENU */
+  nav ul{
+    display:none;
+    flex-direction:column;
+    width:100%;
+    background:var(--nav);
+  }
+
+  /* SHOW ACTIVE MENU */
+  nav ul.active{
+    display:flex;
+  }
+
+  nav ul li{
+    width:100%;
+    text-align:center;
+    border-top:1px solid var(--border);
+  }
+
+  .video-container{
+    padding:20px 12px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>GRADE 11 ICT VIDEOS</h1>
+  <p>ONLINE VIDEO LESSONS</p>
+</header>
+
+<nav>
+
+  <div class="nav-container">
+
+    <!-- HAMBURGER -->
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+  </div>
+
+  <ul id="menu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="Papers.html">Papers</a></li>
+    <li><a href="Projects.html">Projects</a></li>
+    <li><a href="Online class.html">Online class</a></li>
+    <li><a href="Contact.html">Contact</a></li>
+  </ul>
+
+</nav>
+
+<!-- VIDEO SECTION -->
+
+<div class="video-container">
+
+  <!-- CARD 1 -->
+  <div class="video-card">
+
+    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop"
+    class="video-thumb">
+
+    <div class="video-content">
+      <h2>Module 01 - Introduction to ICT</h2>
+
+      <p>
+        Learn the basics of Information and Communication Technology.
+      </p>
+
+      <a href="https://t.me/YOUR_GROUP_LINK"
+         target="_blank"
+         class="watch-btn">
+         Watch Video
+      </a>
+    </div>
+
+  </div>
+
+  <!-- CARD 2 -->
+  <div class="video-card">
+
+    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop"
+    class="video-thumb">
+
+    <div class="video-content">
+      <h2>Module 02 - Computer Parts</h2>
+
+      <p>
+        Learn input devices, output devices and computer hardware.
+      </p>
+
+      <a href="https://t.me/YOUR_GROUP_LINK"
+         target="_blank"
+         class="watch-btn">
+         Watch Video
+      </a>
+    </div>
+
+  </div>
+
+  <!-- CARD 3 -->
+  <div class="video-card">
+
+    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop"
+    class="video-thumb">
+
+    <div class="video-content">
+      <h2>Module 03 - Operating System</h2>
+
+      <p>
+        Learn about Windows, Linux and system software concepts.
+      </p>
+
+      <a href="https://t.me/YOUR_GROUP_LINK"
+         target="_blank"
+         class="watch-btn">
+         Watch Video
+      </a>
+    </div>
+
+  </div>
+
+</div>
+
+<footer>
+  <p>&copy; 2026 ICT | SHAMAL PUNCHIHEWA</p>
+</footer>
+
+<!-- THEME BUTTON -->
+<button class="theme-btn" onclick="toggleTheme()">🌓</button>
+
+<script>
+
+/* MENU */
+
+function toggleMenu(){
+  document.getElementById("menu").classList.toggle("active");
+}
+
+/* THEME */
+
+function toggleTheme(){
+
+  document.body.classList.toggle("light-theme");
+
+  if(document.body.classList.contains("light-theme")){
+    localStorage.setItem("theme","light");
+  }else{
+    localStorage.setItem("theme","dark");
+  }
+
+}
+
+/* LOAD THEME */
+
+window.addEventListener("load",()=>{
+
+  if(localStorage.getItem("theme")==="light"){
+    document.body.classList.add("light-theme");
+  }
+
+});
+
+</script>
+
+</body>
+</html>

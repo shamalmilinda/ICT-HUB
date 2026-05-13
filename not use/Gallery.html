@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ICT Class Lessons</title>
+<title>ICT Class Gallery</title>
 
 <style>
 /* RESET */
@@ -42,13 +42,13 @@ body{
 }
 body.loaded{opacity:1;}
 
-/* ANIMATIONS */
-header, nav, .lesson, footer{
+/* ANIMATION */
+header, nav, .gallery-item, footer{
   opacity:0;
   transform:translateY(40px);
   transition:all 1s ease;
 }
-header.loaded, nav.loaded, .lesson.loaded, footer.loaded{
+header.loaded, nav.loaded, .gallery-item.loaded, footer.loaded{
   opacity:1;
   transform:translateY(0);
 }
@@ -112,31 +112,30 @@ nav ul li a:hover{
   margin:4px 0;
 }
 
-/* LESSONS */
-.lesson-container{
-  max-width:1000px;
-  margin:auto;
+/* GALLERY */
+.gallery-container{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
   padding:30px 20px;
 }
 
-.lesson{
+.gallery-item{
   background:var(--card);
-  padding:20px;
-  margin-bottom:20px;
-  border-radius:12px;
-  border:1px solid #333;
+  border-radius:10px;
+  overflow:hidden;
   box-shadow:0 6px 15px rgba(0,0,0,.7);
   transition:.4s;
 }
 
-.lesson:hover{
-  transform:translateY(-6px);
+.gallery-item:hover{
+  transform:scale(1.04);
   box-shadow:0 0 20px var(--accent);
 }
 
-.lesson h2{
-  color:var(--accent);
-  margin-bottom:10px;
+.gallery-item img{
+  width:100%;
+  display:block;
 }
 
 /* FOOTER */
@@ -168,6 +167,7 @@ footer{
 .theme-btn:hover{
     transform:scale(1.05);
 }
+
 /* ANIMATION */
 @keyframes gradientMove{
   0%{background-position:0% 50%;}
@@ -203,12 +203,9 @@ footer{
     border-top:1px solid var(--border);
   }
 
-  .lesson-container{
+  .gallery-container{
     padding:20px 12px;
-  }
-
-  .lesson{
-    padding:16px;
+    gap:15px;
   }
 }
 </style>
@@ -217,7 +214,7 @@ footer{
 <body>
 
 <header>
-  <h1>PAPERS</h1>
+  <h1>GALLERY</h1>
   <p>INFORMATION AND COMMUNICATION TECHNOLOGY</p>
 </header>
 
@@ -227,20 +224,18 @@ footer{
   </div>
   <ul id="menu">
     <li><a href="index.html">Home</a></li>
-    <li><a href="Lessons.html">Papers</a></li>
+    <li><a href="Papers.html">Papers</a></li>
     <li><a href="Projects.html">Projects</a></li>
     <li><a href="Gallery.html">Gallery</a></li>
     <li><a href="Contact.html">Contact</a></li>
   </ul>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson"><h2>Grade 11</h2></div>
-  <div class="lesson"><h2>Grade 10</h2></div>
-  <div class="lesson"><h2>Grade 9</h2></div>
-  <div class="lesson"><h2>Grade 8</h2></div>
-  <div class="lesson"><h2>Grade 7</h2></div>
-  <div class="lesson"><h2>Grade 6</h2></div>
+<div class="gallery-container">
+  <div class="gallery-item"><img src="Album image.jpg" alt="Project 1"></div>
+  <div class="gallery-item"><img src="Album image.jpg" alt="Project 2"></div>
+  <div class="gallery-item"><img src="Album image.jpg" alt="Project 3"></div>
+  <div class="gallery-item"><img src="Album image.jpg" alt="Project 4"></div>
 </div>
 
 <footer>
@@ -252,7 +247,7 @@ footer{
 
 <script>
 function toggleMenu(){
-  document.getElementById('menu').classList.toggle('active');
+  document.getElementById("menu").classList.toggle("active");
 }
 
 function toggleTheme(){
@@ -274,8 +269,8 @@ window.addEventListener("load", () => {
   document.body.classList.add("loaded");
   document.querySelector("header").classList.add("loaded");
   document.querySelector("nav").classList.add("loaded");
-  document.querySelectorAll(".lesson").forEach(lesson=>{
-    lesson.classList.add("loaded");
+  document.querySelectorAll(".gallery-item").forEach(item=>{
+    item.classList.add("loaded");
   });
   document.querySelector("footer").classList.add("loaded");
 });

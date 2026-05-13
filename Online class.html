@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ICT Class Contact</title>
+<title>ICT Class Lessons</title>
 
 <style>
+
 /* RESET */
 *{
   margin:0;
@@ -20,9 +21,7 @@
   --nav:#111;
   --border:#222;
   --accent:#00cec9;
-  --card-bg:rgba(30,30,30,.6);
-  --input-bg:rgba(15,15,15,.8);
-  --input-text:#fff;
+  --card:#1a1a1a;
 }
 
 /* LIGHT THEME */
@@ -32,9 +31,7 @@ body.light-theme{
   --nav:#f1f1f1;
   --border:#dcdde1;
   --accent:#0984e3;
-  --card-bg:rgba(255,255,255,.85);
-  --input-bg:#f4f4f4;
-  --input-text:#111;
+  --card:#ffffff;
 }
 
 body{
@@ -44,16 +41,22 @@ body{
   opacity:0;
   transition:opacity 1.2s ease-in-out, background .4s, color .4s;
 }
-body.loaded{opacity:1;}
 
-/* ANIMATION */
-header, nav, .contact-form, .contact-info, footer{
+body.loaded{
+  opacity:1;
+}
+
+/* ANIMATIONS */
+header, nav, .lesson, footer{
   opacity:0;
   transform:translateY(40px);
   transition:all 1s ease;
 }
-header.loaded, nav.loaded, .contact-form.loaded,
-.contact-info.loaded, footer.loaded{
+
+header.loaded,
+nav.loaded,
+.lesson.loaded,
+footer.loaded{
   opacity:1;
   transform:translateY(0);
 }
@@ -67,13 +70,18 @@ header{
   text-align:center;
   border-bottom:2px solid var(--border);
 }
+
 header h1{
   font-size:2.5rem;
   color:#fff;
   text-shadow:0 0 15px var(--accent);
 }
 
-/* NAVIGATION */
+header p{
+  margin-top:10px;
+}
+
+/* NAV */
 nav{
   background:var(--nav);
   border-bottom:1px solid var(--border);
@@ -97,6 +105,7 @@ nav ul li a{
   display:block;
   transition:.3s;
 }
+
 nav ul li a:hover{
   color:var(--accent);
   text-shadow:0 0 10px var(--accent);
@@ -109,6 +118,7 @@ nav ul li a:hover{
   cursor:pointer;
   padding:10px 15px;
 }
+
 .menu-toggle span{
   height:3px;
   width:25px;
@@ -116,78 +126,44 @@ nav ul li a:hover{
   margin:4px 0;
 }
 
-/* CONTACT SECTION */
-.contact-container{
+/* LESSONS */
+.lesson-container{
   max-width:1000px;
   margin:auto;
   padding:30px 20px;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:25px;
 }
 
-.contact-form{
-  background:var(--card-bg);
-  backdrop-filter:blur(10px);
-  padding:25px;
-  border-radius:15px;
-  border:1px solid rgba(0,206,201,.5);
-  box-shadow:0 8px 25px rgba(0,0,0,.8);
-}
-
-.contact-form h2,
-.contact-info h2{
-  color:var(--accent);
+.lesson{
+  background:var(--card);
+  padding:20px;
   margin-bottom:20px;
-  text-align:center;
+  border-radius:12px;
+  border:1px solid #333;
+  box-shadow:0 6px 15px rgba(0,0,0,.7);
+  transition:.4s;
 }
 
-.contact-form input,
-.contact-form textarea{
+.lesson:hover{
+  transform:translateY(-6px);
+  box-shadow:0 0 20px var(--accent);
+}
+
+.lesson h2{
+  margin:0;
+}
+
+/* LINK STYLE */
+.lesson-link{
+  color:var(--accent);
+  text-decoration:none;
+  display:block;
   width:100%;
-  padding:12px;
-  margin-bottom:15px;
-  border:none;
-  border-radius:10px;
-  background:var(--input-bg);
-  color:var(--input-text);
-  font-size:1em;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus{
-  outline:none;
-  box-shadow:0 0 12px var(--accent);
-}
-
-.contact-form button{
-  width:100%;
-  padding:12px;
-  border:none;
-  border-radius:10px;
-  background:linear-gradient(135deg,#00cec9,#0984e3);
-  color:#fff;
-  font-weight:bold;
-  cursor:pointer;
+  height:100%;
   transition:.3s;
 }
 
-.contact-form button:hover{
-  transform:scale(1.03);
-  box-shadow:0 0 15px var(--accent);
-}
-
-.contact-info p{
-  margin-bottom:10px;
-}
-
-.social-links a{
-  color:var(--accent);
-  margin-right:12px;
-  text-decoration:none;
-}
-.social-links a:hover{
-  color:#6c5ce7;
+.lesson-link:hover{
+  color:#828282;
 }
 
 /* FOOTER */
@@ -202,22 +178,23 @@ footer{
 
 /* THEME BUTTON */
 .theme-btn{
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    background:var(--accent);
-    color:#000;
-    border:none;
-    padding:10px 14px;
-    border-radius:8px;
-    cursor:pointer;
-    font-weight:bold;
-    box-shadow:0 4px 12px rgba(0,0,0,.3);
-    z-index:2000;
-    transition:0.3s;
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:var(--accent);
+  color:#000;
+  border:none;
+  padding:10px 14px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:bold;
+  box-shadow:0 4px 12px rgba(0,0,0,.3);
+  z-index:2000;
+  transition:0.3s;
 }
+
 .theme-btn:hover{
-    transform:scale(1.05);
+  transform:scale(1.05);
 }
 
 /* ANIMATION */
@@ -255,29 +232,33 @@ footer{
     border-top:1px solid var(--border);
   }
 
-  .contact-container{
+  .lesson-container{
     padding:20px 12px;
-    grid-template-columns:1fr;
   }
 
-  .contact-form{
-    padding:18px;
+  .lesson{
+    padding:16px;
   }
 }
+
 </style>
 </head>
 
 <body>
 
 <header>
-  <h1>CONTACT</h1>
+  <h1>ONLINE CLASS</h1>
   <p>INFORMATION AND COMMUNICATION TECHNOLOGY</p>
 </header>
 
 <nav>
+
   <div class="menu-toggle" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
+
   <ul id="menu">
     <li><a href="index.html">Home</a></li>
     <li><a href="Papers.html">Papers</a></li>
@@ -285,31 +266,59 @@ footer{
     <li><a href="Online class.html">Online class</a></li>
     <li><a href="Contact.html">Contact</a></li>
   </ul>
+
 </nav>
 
-<div class="contact-container">
+<!-- LESSONS -->
 
-  <div class="contact-form">
-    <h2>Send a Message</h2>
-    <form>
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea rows="5" placeholder="Write your message..." required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
+<div class="lesson-container">
+
+  <div class="lesson">
+    <h2>
+      <a href="telegrame link grade 11.html" class="lesson-link">
+        Grade 11 - Online class
+      </a>
+    </h2>
   </div>
 
-  <div class="contact-info">
-    <h2>Contact Information</h2>
-    <p><strong>Address:</strong> Prasanna Niwasa, Barandana Road, Mawathagama.</p>
-    <p><strong>Email:</strong> shamalmilinda44@gmail.com</p>
-    <p><strong>Whatsapp:</strong> +94 71 307 5604</p>
-    <p><strong>Phone:</strong> +94 75 214 3840</p>
-    <div class="social-links">
-      <a href="#">Facebook</a>
-      <a href="#">YouTube</a>
-      <a href="#">LinkedIn</a>
-    </div>
+  <div class="lesson">
+    <h2>
+      <a href="grade10.html" class="lesson-link">
+        Grade 10 - Online class
+      </a>
+    </h2>
+  </div>
+
+  <div class="lesson">
+    <h2>
+      <a href="grade9.html" class="lesson-link">
+        Grade 9 - Online class
+      </a>
+    </h2>
+  </div>
+
+  <div class="lesson">
+    <h2>
+      <a href="grade8.html" class="lesson-link">
+        Grade 8 - Online class
+      </a>
+    </h2>
+  </div>
+
+  <div class="lesson">
+    <h2>
+      <a href="grade7.html" class="lesson-link">
+        Grade 7 - Online class
+      </a>
+    </h2>
+  </div>
+
+  <div class="lesson">
+    <h2>
+      <a href="grade6.html" class="lesson-link">
+        Grade 6 - Online class
+      </a>
+    </h2>
   </div>
 
 </div>
@@ -319,14 +328,21 @@ footer{
 </footer>
 
 <!-- THEME BUTTON -->
+
 <button class="theme-btn" onclick="toggleTheme()">🌓</button>
 
 <script>
+
+/* MENU */
+
 function toggleMenu(){
-  document.getElementById("menu").classList.toggle("active");
+  document.getElementById('menu').classList.toggle('active');
 }
 
+/* THEME */
+
 function toggleTheme(){
+
   document.body.classList.toggle("light-theme");
 
   if(document.body.classList.contains("light-theme")){
@@ -334,7 +350,10 @@ function toggleTheme(){
   }else{
     localStorage.setItem("theme","dark");
   }
+
 }
+
+/* LOAD */
 
 window.addEventListener("load", () => {
 
@@ -343,12 +362,18 @@ window.addEventListener("load", () => {
   }
 
   document.body.classList.add("loaded");
+
   document.querySelector("header").classList.add("loaded");
   document.querySelector("nav").classList.add("loaded");
-  document.querySelector(".contact-form").classList.add("loaded");
-  document.querySelector(".contact-info").classList.add("loaded");
+
+  document.querySelectorAll(".lesson").forEach(lesson=>{
+    lesson.classList.add("loaded");
+  });
+
   document.querySelector("footer").classList.add("loaded");
+
 });
+
 </script>
 
 </body>
